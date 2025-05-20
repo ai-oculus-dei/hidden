@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('images/hidden-back.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    color: white;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: -1;
+  }
+  
+  .login-container {
+    background-color: rgba(20, 20, 20, 0.85);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #ddd;
+    width: 100%;
+  }
+  
+  input[type="password"],
+  button {
+    width: 100%;       /* ¡Para que sean del ancho del contenedor! */
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  
+  input[type="password"] {
+    border: 1px solid #555;
+    background-color: #222;
+    color: white;
+  }
+  
+  input[type="password"]::placeholder {
+    color: #999;
+  }
+  
+  button {
+    background-color: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #666;
+  }
+  
+  /* Media queries para pantallas más grandes */
+  @media (min-width: 600px) {
+    .login-container {
+      padding: 3rem;
+    }
+  
+    label {
+      font-size: 1.3rem;
+    }
+  
+    input[type="password"],
+    button {
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+  }
+  
