@@ -1,17 +1,17 @@
 body {
-    background-image: url('images/fondo.png'); /* Tu imagen nocturna */
-    background-size: cover;
-    font-family: 'Courier New', Courier, monospace;
-    color: #ddd;
-    text-align: center;
-    padding-top: 2rem;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
+  margin: 0;
+  padding: 0;
+  background: url('images/fondo.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Courier New', 'Courier New', Courier, monospace;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding-top: 2rem;
+}
   
   .titulo {
     font-size: 1.1rem;
