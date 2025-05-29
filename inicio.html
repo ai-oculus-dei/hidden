@@ -3,60 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Courier New", monospace;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: #ccc;
-    }
-
-    .botonera {
-      width: 90%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    button {
-      font-family: "Courier New", monospace;
-      font-size: 1.2rem;
-      padding: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #333;
-      color: white;
-      width: 100%;
-    }
-
-    button:disabled {
-      background-color: #111;
-      color: #666;
-      cursor: not-allowed;
-    }
-  </style>
+  <title>?</title>
+  <link rel="stylesheet" href="inicio.css" />
 </head>
 <body>
-  <h1>Sálvalas</h1>
-  <div class="botonera">
-    <button>Botón 1</button>
-    <button disabled>Botón 2</button>
-    <button disabled>Botón 3</button>
-    <button disabled>Botón 4</button>
+  <div class="overlay">
+    <h1><u>Segunda Lección</u>: <i>"Justicia"</i></h1>
+    <h2>Como has aprendido, vas a hacer lo que te diga. Encuentra la clave de cuatro letras de cada una de las chicas antes de que se acabe la cuenta atrás. Sálvalas a todas, están sufriendo...</h2>
+
+    <button id="btn-prueba1" onclick="location.href='carla.html'">Carla</button>
+    <button id="btn-prueba2" onclick="location.href='susan.html'" disabled>Susan</button>
+    <button id="btn-prueba3" onclick="location.href='maria.html'" disabled>María</button>
   </div>
+
+  <script src="inicio.js"></script>
 </body>
 </html>

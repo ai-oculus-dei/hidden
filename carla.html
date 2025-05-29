@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carla</title>
+  <link rel="stylesheet" href="carla.css" />
+</head>
+<body>
+  <div class="overlay">
+    <h1>Carla</h1>
+    <img id="imagen-carla" src="images/spanish-jailed.png" alt="Carla" />
+    <p id="texto-inicial">Mira que carita, esperemos que la Agente Plaza te salve</p>
+    <button id="btn-empezar">Empezar</button>
+    <p id="cronometro" style="display:none;">00:20:00</p>
+    <p id="pista" style="display:none"><i>"Con alas doradas bajo un manto estrellado,
+                                            el guardián sostiene en su libro la verdad
+                                            para que toda la plaza la vea"</i></p>
+    <p id="texto-clave" style="display:none">Introduce la clave:</p>
+    <div id="clave" style="display:none">
+        <input maxlength="1" class="letra" />
+        <input maxlength="1" class="letra" />
+        <input maxlength="1" class="letra" />
+        <input maxlength="1" class="letra" />
+    </div>
+
+    <button id="btn-continuar" style="display:none; margin-top: 10px;">Continuar</button>
+
+  </div>
+
+  <script src="carla.js"></script>
+</body>
+</html>

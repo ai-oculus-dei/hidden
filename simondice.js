@@ -53,7 +53,7 @@ function manejarClick(color) {
 
   const index = secuenciaUsuario.length - 1;
   if (secuenciaUsuario[index] !== secuencia[index]) {
-    mensaje.textContent = "¡Fallaste! Volviendo al principio...";
+    mensaje.textContent = "Creía que eras más inteligente, comenzamos de nuevo";
     secuenciaUsuario = [];
     esperando = false;
     rondaActual = 1;        // volvemos a la primera ronda
@@ -67,14 +67,14 @@ function manejarClick(color) {
 
   if (secuenciaUsuario.length === secuencia.length) {
     if (rondaActual === totalRondas) {
-      mensaje.textContent = "¡Has ganado!";
+      mensaje.textContent = "Bien bien bien, continuamos";
       setTimeout(() => {
-        window.location.href = "final.html";
+        window.location.href = "simon-end.html";
       }, 1500);
     } else {
       rondaActual++;
       actualizarContador();
-      mensaje.textContent = "¡Bien hecho! Preparando siguiente ronda...";
+      mensaje.textContent = "Bien, siguiente ronda";
       esperando = false;
       setTimeout(() => {
         mensaje.textContent = "Observa la secuencia...";

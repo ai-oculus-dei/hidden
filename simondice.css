@@ -1,8 +1,8 @@
 body {
-    background-image: url('images/hidden-back.png'); /* Tu imagen nocturna */
+    background-image: url('images/fondo.png'); /* Tu imagen nocturna */
     background-size: cover;
-    font-family: 'Courier New', monospace;
-    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ddd;
     text-align: center;
     padding-top: 2rem;
     margin: 0;
@@ -14,14 +14,16 @@ body {
   }
   
   .titulo {
-    font-size: 2rem;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
+    color: #ddd;
   }
   
   .contenedor {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     width: 80vw;
     max-width: 400px;
     margin: 0 auto;
@@ -38,10 +40,10 @@ body {
     width: 100%;        /* Ancho total del contenedor */
   }
   
-  #verde { background-color: green; }
-  #rojo { background-color: red; }
-  #amarillo { background-color: gold; }
-  #azul { background-color: blue; }
+  #verde { background-color: lightgray; }
+  #rojo { background-color: lightgray; }
+  #amarillo { background-color: lightgray; }
+  #azul { background-color: lightgray; }
   
   #mensaje {
     margin-top: 2rem;
@@ -49,4 +51,11 @@ body {
     min-height: 1.5em; /* para que no "brinque" el texto */
   }
   
-  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Caja negra con transparencia */
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+  }
