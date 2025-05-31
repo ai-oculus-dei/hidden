@@ -8,7 +8,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   text-align: center;
   padding-top: 2rem;
 }
@@ -59,3 +60,11 @@ body {
     width: 90%;
     max-width: 500px;
   }
+
+ /*  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+  } */
