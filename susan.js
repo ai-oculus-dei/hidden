@@ -4,22 +4,20 @@ const textoInicial = document.getElementById('texto-inicial');
 const cronometro = document.getElementById('cronometro');
 const textoClave = document.getElementById('texto-clave');
 const pista = document.getElementById('pista');
-const imagenCarla = document.getElementById('imagen-carla');
+const imagenSusan = document.getElementById('imagen-susan');
 const inputsClave = Array.from(document.querySelectorAll('#clave input'));
 let segundosRestantesGlobal;
 let timeoutID;
 
-const CLAVE_CORRECTA = "TIBI";
-const clave_uno_mala = "MEUS";
-const clave_dos_mala = "MEVS";
+const CLAVE_CORRECTA = "GATO";
 const DURACION_SEGUNDOS = 20 * 60;
 
 // Guardado local
 function guardarTiempoFinal(timestamp) {
-  localStorage.setItem('carlaTiempoFinal', timestamp);
+  localStorage.setItem('susanTiempoFinal', timestamp);
 }
 function obtenerTiempoFinal() {
-  return localStorage.getItem('carlaTiempoFinal');
+  return localStorage.getItem('susanTiempoFinal');
 }
 function formatearTiempo(segundos) {
   let h = Math.floor(segundos / 3600);
@@ -34,18 +32,18 @@ function mostrarCronometro() {
   cronometro.style.display = 'block';
 }
 
-function marcarCarlaComoMuerta() {
-  localStorage.setItem('carlaMuerta', 'true');
+function marcarSusanComoMuerta() {
+  localStorage.setItem('susanMuerta', 'true');
 }
-function mostrarEstadoCarlaMuerta() {
+function mostrarEstadoSusanMuerta() {
   cronometro.textContent = "00:00:00";
   cronometro.classList.add('rojo');
   cronometro.classList.remove('cronometro-verde');
-  imagenCarla.src = 'images/spanish-dead.png';
-  textoInicial.textContent = 'Vaya, esto es duro para los dos... has sido la responsable de matar a Carla. Espero que seas más competente para el resto';
+  imagenSusan.src = 'images/black-dead.png';
+  textoInicial.textContent = 'Estoy empezando a pensar que me equivoque contigo. Sus padres van a estar muy tristes cuando se enteren de la noticia';
   cronometro.style.display = 'block';
   btnEmpezar.style.display = 'none';
-  btnContinuar.textContent = 'Continuar sin Carla';
+  btnContinuar.textContent = 'Continuar sin Susan';
   btnContinuar.style.display = 'inline-block';
 }
 
@@ -58,9 +56,9 @@ function iniciarCuentaAtras(segundosRestantes) {
       cronometro.textContent = "00:00:00";
       cronometro.classList.add('rojo');
       cronometro.classList.remove('cronometro-verde');
-      imagenCarla.src = 'images/spanish-dead.png';
-      textoInicial.textContent = 'Carla no sobrevivió. Fallaste.';
-      marcarCarlaComoMuerta();
+      imagenSusan.src = 'images/black-dead.png';
+      textoInicial.textContent = 'Susan no sobrevivió. Fallaste.';
+      marcarSusanComoMuerta();
       location.reload();
       clearTimeout(timeoutID);
       return;
@@ -106,23 +104,23 @@ btnContinuar.addEventListener('click', () => {
 });
 
 window.addEventListener('load', () => {
-  if (localStorage.getItem('carlaMuerta') === 'true') {
-    mostrarEstadoCarlaMuerta();
+  if (localStorage.getItem('susanMuerta') === 'true') {
+    mostrarEstadoSusanMuerta();
     return;
   }
 
-  const prueba1Completada = localStorage.getItem('prueba1Completada') === 'true';
+  const prueba2Completada = localStorage.getItem('prueba2Completada') === 'true';
   const tiempoFinal = obtenerTiempoFinal();
 
-  if (prueba1Completada) {
+  if (prueba2Completada) {
     cronometro.classList.add('cronometro-verde');
-    imagenCarla.src = 'images/spanish-free.png';
+    imagenSusan.src = 'images/black-free.png';
 
-    const tiempoRestaurado = parseInt(localStorage.getItem('carlaTiempoRestanteSalvada') || '0');
+    const tiempoRestaurado = parseInt(localStorage.getItem('susanTiempoRestanteSalvada') || '0');
     cronometro.textContent = formatearTiempo(tiempoRestaurado);
     cronometro.style.display = 'block';
 
-    textoClave.textContent = "Clave correcta, ¡Salvaste a Carla!";
+    textoClave.textContent = "Clave correcta, ¡Salvaste a Susan!";
     textoClave.style.display = 'block';
     pista.style.display = 'block';
 
@@ -140,13 +138,13 @@ window.addEventListener('load', () => {
     return;
   }
 
-  if (tiempoFinal && !prueba1Completada) {
+  if (tiempoFinal && !prueba2Completada) {
     const segRestantes = Math.round((tiempoFinal - Date.now()) / 1000);
     if (segRestantes > 0) {
       iniciarCuentaAtras(segRestantes);
       mostrarClave();
     } else {
-      localStorage.removeItem('carlaTiempoFinal');
+      localStorage.removeItem('susanTiempoFinal');
     }
   }
 });
@@ -174,24 +172,20 @@ inputsClave.forEach((input, idx) => {
 function verificarClave(clave) {
   if (clave === CLAVE_CORRECTA) {
     clearTimeout(timeoutID);
-    textoClave.textContent = "Clave correcta, ¡Salvaste a Carla!";
-    imagenCarla.src = 'images/spanish-free.png';
+    textoClave.textContent = "Clave correcta, ¡Salvaste a Susan!";
+    imagenSusan.src = 'images/black-free.png';
     cronometro.classList.add('cronometro-verde');
     cronometro.classList.remove('rojo');
     inputsClave.forEach(input => input.disabled = true);
     btnEmpezar.disabled = true;
-    localStorage.setItem('prueba1Completada', 'true');
-    localStorage.removeItem('carlaTiempoFinal');
-    localStorage.removeItem('carlaMuerta');
+    localStorage.setItem('prueba2Completada', 'true');
+    localStorage.removeItem('susanTiempoFinal');
+    localStorage.removeItem('susanMuerta');
     localStorage.setItem('claveIntroducida', clave);
-    localStorage.setItem('carlaTiempoRestanteSalvada', segundosRestantesGlobal.toString());
+    localStorage.setItem('susanTiempoRestanteSalvada', segundosRestantesGlobal.toString());
     btnContinuar.style.display = 'inline-block';
-  } else if (clave === clave_uno_mala || clave === clave_dos_mala) {
-    textoClave.textContent = "Caliente, calienteeee... Estás muy cerca";
-    inputsClave.forEach(input => input.value = '');
-    inputsClave[0].focus();
   } else {
-    textoClave.textContent = "Uuuuh de verdad quieres que Carla muera. Te resto dos minutos.";
+    textoClave.textContent = "Frío, frío... vas a acabar con la pobre Susan";
     segundosRestantesGlobal -= 120;
     if (segundosRestantesGlobal < 0) segundosRestantesGlobal = 0;
     const nuevoTiempoFinal = Date.now() + segundosRestantesGlobal * 1000;

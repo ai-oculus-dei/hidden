@@ -4,22 +4,19 @@ const textoInicial = document.getElementById('texto-inicial');
 const cronometro = document.getElementById('cronometro');
 const textoClave = document.getElementById('texto-clave');
 const pista = document.getElementById('pista');
-const imagenCarla = document.getElementById('imagen-carla');
+const imagenMery = document.getElementById('imagen-mery');
 const inputsClave = Array.from(document.querySelectorAll('#clave input'));
 let segundosRestantesGlobal;
 let timeoutID;
 
-const CLAVE_CORRECTA = "TIBI";
-const clave_uno_mala = "MEUS";
-const clave_dos_mala = "MEVS";
-const DURACION_SEGUNDOS = 20 * 60;
+const DURACION_SEGUNDOS = 12 * 60;
 
 // Guardado local
 function guardarTiempoFinal(timestamp) {
-  localStorage.setItem('carlaTiempoFinal', timestamp);
+  localStorage.setItem('meryTiempoFinal', timestamp);
 }
 function obtenerTiempoFinal() {
-  return localStorage.getItem('carlaTiempoFinal');
+  return localStorage.getItem('meryTiempoFinal');
 }
 function formatearTiempo(segundos) {
   let h = Math.floor(segundos / 3600);
@@ -34,18 +31,18 @@ function mostrarCronometro() {
   cronometro.style.display = 'block';
 }
 
-function marcarCarlaComoMuerta() {
-  localStorage.setItem('carlaMuerta', 'true');
+function marcarMeryComoMuerta() {
+  localStorage.setItem('meryMuerta', 'true');
 }
-function mostrarEstadoCarlaMuerta() {
+function mostrarEstadoMeryMuerta() {
   cronometro.textContent = "00:00:00";
   cronometro.classList.add('rojo');
   cronometro.classList.remove('cronometro-verde');
-  imagenCarla.src = 'images/spanish-dead.png';
-  textoInicial.textContent = 'Vaya, esto es duro para los dos... has sido la responsable de matar a Carla. Espero que seas más competente para el resto';
+  imagenMery.src = 'images/redhead-dead.png';
+  textoInicial.textContent = 'Oh no, la pobre Mery ha muerto, su hermana pequeña la va a echar mucho de menos';
   cronometro.style.display = 'block';
   btnEmpezar.style.display = 'none';
-  btnContinuar.textContent = 'Continuar sin Carla';
+  btnContinuar.textContent = 'Continuar sin Mery';
   btnContinuar.style.display = 'inline-block';
 }
 
@@ -58,9 +55,9 @@ function iniciarCuentaAtras(segundosRestantes) {
       cronometro.textContent = "00:00:00";
       cronometro.classList.add('rojo');
       cronometro.classList.remove('cronometro-verde');
-      imagenCarla.src = 'images/spanish-dead.png';
-      textoInicial.textContent = 'Carla no sobrevivió. Fallaste.';
-      marcarCarlaComoMuerta();
+      imagenMery.src = 'images/redhead-dead.png';
+      textoInicial.textContent = 'Mery no sobrevivió. Fallaste.';
+      marcarMeryComoMuerta();
       location.reload();
       clearTimeout(timeoutID);
       return;
@@ -106,23 +103,23 @@ btnContinuar.addEventListener('click', () => {
 });
 
 window.addEventListener('load', () => {
-  if (localStorage.getItem('carlaMuerta') === 'true') {
-    mostrarEstadoCarlaMuerta();
+  if (localStorage.getItem('meryMuerta') === 'true') {
+    mostrarEstadoMeryMuerta();
     return;
   }
 
-  const prueba1Completada = localStorage.getItem('prueba1Completada') === 'true';
+  const prueba3Completada = localStorage.getItem('prueba3Completada') === 'true';
   const tiempoFinal = obtenerTiempoFinal();
 
-  if (prueba1Completada) {
+  if (prueba3Completada) {
     cronometro.classList.add('cronometro-verde');
-    imagenCarla.src = 'images/spanish-free.png';
+    imagenMery.src = 'images/redhead-free.png';
 
-    const tiempoRestaurado = parseInt(localStorage.getItem('carlaTiempoRestanteSalvada') || '0');
+    const tiempoRestaurado = parseInt(localStorage.getItem('meryTiempoRestanteSalvada') || '0');
     cronometro.textContent = formatearTiempo(tiempoRestaurado);
     cronometro.style.display = 'block';
 
-    textoClave.textContent = "Clave correcta, ¡Salvaste a Carla!";
+    textoClave.textContent = "Clave correcta, ¡Salvaste a Mery!";
     textoClave.style.display = 'block';
     pista.style.display = 'block';
 
@@ -140,13 +137,13 @@ window.addEventListener('load', () => {
     return;
   }
 
-  if (tiempoFinal && !prueba1Completada) {
+  if (tiempoFinal && !prueba3Completada) {
     const segRestantes = Math.round((tiempoFinal - Date.now()) / 1000);
     if (segRestantes > 0) {
       iniciarCuentaAtras(segRestantes);
       mostrarClave();
     } else {
-      localStorage.removeItem('carlaTiempoFinal');
+      localStorage.removeItem('meryTiempoFinal');
     }
   }
 });
@@ -172,31 +169,13 @@ inputsClave.forEach((input, idx) => {
 });
 
 function verificarClave(clave) {
-  if (clave === CLAVE_CORRECTA) {
-    clearTimeout(timeoutID);
-    textoClave.textContent = "Clave correcta, ¡Salvaste a Carla!";
-    imagenCarla.src = 'images/spanish-free.png';
-    cronometro.classList.add('cronometro-verde');
-    cronometro.classList.remove('rojo');
-    inputsClave.forEach(input => input.disabled = true);
-    btnEmpezar.disabled = true;
-    localStorage.setItem('prueba1Completada', 'true');
-    localStorage.removeItem('carlaTiempoFinal');
-    localStorage.removeItem('carlaMuerta');
-    localStorage.setItem('claveIntroducida', clave);
-    localStorage.setItem('carlaTiempoRestanteSalvada', segundosRestantesGlobal.toString());
-    btnContinuar.style.display = 'inline-block';
-  } else if (clave === clave_uno_mala || clave === clave_dos_mala) {
-    textoClave.textContent = "Caliente, calienteeee... Estás muy cerca";
-    inputsClave.forEach(input => input.value = '');
-    inputsClave[0].focus();
-  } else {
-    textoClave.textContent = "Uuuuh de verdad quieres que Carla muera. Te resto dos minutos.";
+  
+    textoClave.textContent = "Pobrecita, vas a hacer que muera";
     segundosRestantesGlobal -= 120;
     if (segundosRestantesGlobal < 0) segundosRestantesGlobal = 0;
     const nuevoTiempoFinal = Date.now() + segundosRestantesGlobal * 1000;
     guardarTiempoFinal(nuevoTiempoFinal);
     inputsClave.forEach(input => input.value = '');
     inputsClave[0].focus();
-  }
+
 }

@@ -7,7 +7,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   color: #fff;
 }
 
@@ -68,3 +68,19 @@ button:disabled {
   background-color: rgb(177, 75, 75) !important;
   color: white;
 }
+
+#btn-continuar {
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 200px;
+  width: 80vw;
+}
+
+

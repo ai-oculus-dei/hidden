@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Susan</title>
+  <link rel="stylesheet" href="susan.css?v=202505291" />
+</head>
+<body>
+  <div class="overlay">
+    <h1>Susan</h1>
+    <img id="imagen-susan" src="images/black-jailed.png" alt="Susan" />
+    <p id="texto-inicial">No para de repetirme que tiene miedo y frío, ¿crees que podrás salvarla?</p>
+    <button id="btn-empezar">Empezar</button>
+    <p id="cronometro" style="display:none;">00:20:00</p>
+    <p id="pista" style="display:none"><i>"Cuando el Agua está Alta,
+                                           los libros se salvan en góndolas
+                                           varadas; cuando está baja, estas criaturas
+                                           los guardan"</i></p>
+    <p id="texto-clave" style="display:none">Introduce la clave:</p>
+    <div id="clave" style="display:none">
+        <input maxlength="1" class="letra" />
+        <input maxlength="1" class="letra" />
+        <input maxlength="1" class="letra" />
+        <input maxlength="1" class="letra" />
+    </div>
+
+    <button id="btn-continuar" style="display:none; margin-top: 10px;">Continuar</button>
+
+  </div>
+
+  <script src="susan.js?v=202505291"></script>
+</body>
+</html>
