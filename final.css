@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('images/fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Courier New', 'Courier New', Courier, monospace;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width:100%;
+    text-align: center;
+  }
+
+  

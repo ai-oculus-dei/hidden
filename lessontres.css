@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('images/fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Courier New', 'Courier New', Courier, monospace;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width:100%;
+    text-align: center;
+  }
+  
+  .container {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 500px;
+    margin-top: 90px;
+  }
+  
+  h1 {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    font-size: 0.95em;
+    margin-bottom: 1.5em;
+    text-align: justify;
+  }
+  
+  button {
+    font-size: 1em;
+    padding: 0.8em 1.5em;
+    background-color: #ffffff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+  }
+  
+  button:hover {
+    background-color: #ddd;
+  }
+  

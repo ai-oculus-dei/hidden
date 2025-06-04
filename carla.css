@@ -40,13 +40,13 @@ h1 {
 }
 
 img {
-  width: 100%;
+  display: block;
   max-width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 15px;
-  margin-bottom: 0.5rem;
-  clip-path: inset(10% 0 5% 0); /* recortar arriba y abajo un 10% */
+  margin: 0 auto 0.5rem auto;
+  clip-path: inset(7% 0 5% 0);
   box-sizing: border-box;
 }
 

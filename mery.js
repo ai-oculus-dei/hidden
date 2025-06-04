@@ -9,7 +9,7 @@ const inputsClave = Array.from(document.querySelectorAll('#clave input'));
 let segundosRestantesGlobal;
 let timeoutID;
 
-const DURACION_SEGUNDOS = 12 * 60;
+const DURACION_SEGUNDOS = 15 * 60;
 
 // Guardado local
 function guardarTiempoFinal(timestamp) {

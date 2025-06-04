@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>?</title>
-  <link rel="stylesheet" href="bomba.css?v=20250604" />
+  <link rel="stylesheet" href="bomba.css?v=final" />
 </head>
 <body>
   <div class="overlay">
@@ -13,19 +13,22 @@
     <p id="texto-inicial">¿Reconoces lo que aparece en la foto? 
                             Exacto, es una bomba en las profundidades de Venecia.
                              ¿Quieres salvar al resto de personas de la ciudad, 
-                             incluida tú; o vais a correr la misma suerte que Carla, Susan y Mery?
+                             incluida tú; o vas a correr la misma suerte que Carla, Susan y Mery?
                                     Mira detrás de los cuadros de tu apartamento. 
                                     Cuando lo encuentres dale a empezar</p>
     <button id="btn-empezar">Empezar</button>
     <p id="cronometro" style="display:none;">24:00:00</p>
-    <p id="pista" style="display:none"><i>"Resuelve el caso imposible del comisario Ángel Gallo, 
-        sabré cuando lo hayas hecho. Si presionas el botón de Resuelto 
-        y no lo has hecho, volará todo por los aires"</i></p>
-
-    <button id="btn-continuar" style="display:none; margin-top: 10px;">Resuelto</button>
+    <p id="pista" style="display:none"><i>"Resuelve el caso imposible del comisario Ángel Gallo. 
+                                          Una vez resuelto, sabrás cuál es la clave. Si te equivocas,
+                                          toda Venecia volará por los aires, incluidos sus más de 25.000
+                                          niños."</i></p>
+      <div id="clave" style="display: none; flex-direction: column; align-items: center;">
+        <input type="text" id="input-clave" placeholder="Introduce la clave" />
+      </div>
+    <button id="btn-continuar" style="display:none; margin-top: 10px;">Resolver</button>
 
   </div>
 
-  <script src="bomba.js?v=20250604"></script>
+  <script src="bomba.js?v=final"></script>
 </body>
 </html>

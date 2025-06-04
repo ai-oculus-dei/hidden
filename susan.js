@@ -10,7 +10,7 @@ let segundosRestantesGlobal;
 let timeoutID;
 
 const CLAVE_CORRECTA = "GATO";
-const DURACION_SEGUNDOS = 20 * 60;
+const DURACION_SEGUNDOS = 30 * 60;
 
 // Guardado local
 function guardarTiempoFinal(timestamp) {

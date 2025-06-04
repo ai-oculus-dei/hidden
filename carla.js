@@ -12,7 +12,7 @@ let timeoutID;
 const CLAVE_CORRECTA = "TIBI";
 const clave_uno_mala = "MEUS";
 const clave_dos_mala = "MEVS";
-const DURACION_SEGUNDOS = 20 * 60;
+const DURACION_SEGUNDOS = 35 * 60;
 
 // Guardado local
 function guardarTiempoFinal(timestamp) {
